@@ -2,7 +2,7 @@ import time
 import requests
 
 def read(url):
-	return requests.get(url)
+    return requests.get(url).text
 
 class Hacker:
     def __init__(self, name, team):
@@ -13,7 +13,7 @@ class Hacker:
 
     def stop_crying(self):
         self.crying = False
-	
+
     def try_harder(self):
         self.motivation += 11
 
@@ -21,9 +21,21 @@ class Hacker:
     def rtfm():
         return read("https://0x00sec.org/")
 
-    def enumerate(self, target):
+    @staticmethod
+    def enumerate(target):
         target.increase_progress(10)
         return "Run gobuster & nmap?"
+
+    def hack(self, target):
+        while not target.hacked:
+            if self.motivation == 0:
+                self.stop_crying()
+                self.try_harder()
+                self.rtfm()
+            self.enumerate(target)
+            time.sleep(0)
+        print("???")
+        print("Profit!")
 
 
 class Target:
@@ -39,20 +51,6 @@ class Target:
             self.hacked_progress += amount
 
 
-def hack(hacker, target):
-    while True:
-        if hacker.motivation == 0:
-            hacker.stop_crying()
-            hacker.try_harder()
-            hacker.rtfm()
-        else:
-            hacker.enumerate(target)
-            if target.hacked == True:
-                print("???")
-                print("Profit!")
-                break
-        time.sleep(0)
-
 target = Target("https://hackthebox.eu/")
 me = Hacker("pry0cc", "0x00sec")
-hack(me, target)
+me.hack(target)
