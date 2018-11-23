@@ -9,17 +9,17 @@ class Hacker:
     def __init__(self, name, team):
         self.name = name
         self.team = team
-        self.motivation = 0
+        self.motivation = 0.0
         self.crying = True
         self.progressbar = progressbar.ProgressBar(100)
-        self.sleep_interval = 0.2
+        self.sleep_interval = 3
         self.post_hack_nap = 0.5 
 
     def stop_crying(self):
         self.crying = False
 
     def try_harder(self):
-        self.motivation += 11
+        self.motivation += 13.37
 
     @staticmethod
     def rtfm():
@@ -60,6 +60,6 @@ class Target:
             self.hacked_progress += amount
 
 
-target = Target("https://hackthebox.eu/")
+target = Target("hackthebox.eu")
 me = Hacker("pry0cc", "0x00sec")
 me.hack(target)
