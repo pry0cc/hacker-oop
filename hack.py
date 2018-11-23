@@ -11,7 +11,7 @@ class Hacker:
         self.team = team
         self.motivation = 0
         self.crying = True
-        self.progressbar = progressbar.ProgressBar()
+        self.progressbar = progressbar.ProgressBar(100)
 
     def stop_crying(self):
         self.crying = False
@@ -29,8 +29,9 @@ class Hacker:
         return "Run gobuster & nmap?"
 
     def hack(self, target):
+        print("[*] Initializing hacking against %s with hacker %s" % (target.hostname, self.name))
+        self.progressbar.start()
         while not target.hacked:
-            print(target.hacked_progress)
             self.progressbar.update(target.hacked_progress)
             if self.motivation == 0:
                 self.stop_crying()
@@ -38,6 +39,8 @@ class Hacker:
                 self.rtfm()
             self.enumerate(target)
             time.sleep(0.2)
+        time.sleep(0.5)
+        print("")
         print("???")
         print("Profit!")
 
