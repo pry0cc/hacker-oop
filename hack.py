@@ -2,57 +2,55 @@ import time
 import requests
 
 def read(url):
-	return requests.get(url)
+    return requests.get(url).text
 
 class Hacker:
-	def __init__(self, name, team):
-		self.name = name
-		self.team = team
-		self.motivation = 0
-		self.crying = True
+    def __init__(self, name, team):
+        self.name = name
+        self.team = team
+        self.motivation = 0
+        self.crying = True
 
-	def stop_crying(self):
-		self.crying = False
+    def stop_crying(self):
+        self.crying = False
 
-	def try_harder(self):
-		self.motivation += 11
+    def try_harder(self):
+        self.motivation += 11
 
-	def rtfm(self):
-		read("https://0x00sec.org/")
+    @staticmethod
+    def rtfm():
+        read("https://0x00sec.org/")
 
-	def enumerate(self, target):
-		target.increase_progress(10)
-		return "Run gobuster & nmap?"
+    @staticmethod
+    def enumerate(target):
+        target.increase_progress(10)
+        return "Run gobuster & nmap?"
+
+    def hack(self, target):
+        while not target.hacked:
+            if self.motivation == 0:
+                self.stop_crying()
+                self.try_harder()
+                self.rtfm()
+            self.enumerate(target)
+            time.sleep(0)
+        print("???")
+        print("Profit!")
 
 
 class Target:
-	def __init__(self, hostname):
-		self.hostname = hostname
-		self.hacked = False
-		self.hacked_progress = 0
+    def __init__(self, hostname):
+        self.hostname = hostname
+        self.hacked = False
+        self.hacked_progress = 0
 
-	def increase_progress(self, amount):
-		if self.hacked_progress >= 100:
-			self.hacked = True
-		else:
-			self.hacked_progress += amount
-
-
-def hack(hacker, target):
-    while True:
-        if hacker.motivation == 0:
-            hacker.stop_crying()
-            hacker.try_harder()
-            hacker.rtfm()
+    def increase_progress(self, amount):
+        if self.hacked_progress >= 100:
+            self.hacked = True
         else:
-            hacker.enumerate(target)
-            if target.hacked == True:
-                print("???")
-                print("Profit!")
-                break
-        time.sleep(0)
+            self.hacked_progress += amount
 
 
 target = Target("https://hackthebox.eu/")
 me = Hacker("pry0cc", "0x00sec")
-hack(me, target)
+me.hack(target)
