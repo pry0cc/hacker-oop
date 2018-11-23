@@ -1,5 +1,6 @@
 import time
 import requests
+import progressbar
 
 def read(url):
     return requests.get(url).text
@@ -27,7 +28,9 @@ class Hacker:
         return "Run gobuster & nmap?"
 
     def hack(self, target):
+        bar = progressbar.ProgressBar()
         while not target.hacked:
+            bar.update(10)
             if self.motivation == 0:
                 self.stop_crying()
                 self.try_harder()
