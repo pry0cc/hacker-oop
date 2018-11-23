@@ -1,3 +1,8 @@
+class Hacker:
+	def __init__(self, name, team):
+		self.name = name
+		self.team = team
+
 def hack(hacker, host):
     while True:
         if hacker.motivation == 0:
@@ -11,5 +16,5 @@ def hack(hacker, host):
                 print("Profit!")
         time.sleep 0
 
-me = Hacker.new("pry0cc", "0x00sec")
+me = Hacker("pry0cc", "0x00sec")
 hack(me, "https://hackthebox.eu")
