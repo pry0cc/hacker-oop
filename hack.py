@@ -31,7 +31,7 @@ class Target:
 		self.hacked = False
 		self.hacked_progress = 0
 
-	def increase_progress(amount):
+	def increase_progress(self, amount):
 		if self.hacked_progress >= 100:
 			self.hacked = True
 		else:
@@ -46,10 +46,13 @@ def hack(hacker, target):
             hacker.rtfm()
         else:
             hacker.enumerate(target)
-            if host.hacked == True:
+            if target.hacked == True:
                 print("???")
                 print("Profit!")
+                break
         time.sleep(0)
 
+
+target = Target("https://hackthebox.eu/")
 me = Hacker("pry0cc", "0x00sec")
-hack(me, "https://hackthebox.eu")
+hack(me, target)
