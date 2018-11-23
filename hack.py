@@ -12,6 +12,8 @@ class Hacker:
         self.motivation = 0
         self.crying = True
         self.progressbar = progressbar.ProgressBar(100)
+        self.sleep_interval = 0.2
+        self.post_hack_nap = 0.5 
 
     def stop_crying(self):
         self.crying = False
@@ -38,8 +40,8 @@ class Hacker:
                 self.try_harder()
                 self.rtfm()
             self.enumerate(target)
-            time.sleep(0.2)
-        time.sleep(0.5)
+            time.sleep(self.sleep_interval)
+        time.sleep(self.post_hack_nap)
         print("")
         print("???")
         print("Profit!")
