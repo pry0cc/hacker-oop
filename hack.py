@@ -19,7 +19,7 @@ class Hacker:
 
     @staticmethod
     def rtfm():
-        read("https://0x00sec.org/")
+        return read("https://0x00sec.org/")
 
     @staticmethod
     def enumerate(target):
