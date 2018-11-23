@@ -6,36 +6,36 @@ def read(url):
 
 class Hacker:
     def __init__(self, name, team):
-	self.name = name
-	self.team = team
-	self.motivation = 0
-	self.crying = True
+        self.name = name
+        self.team = team
+        self.motivation = 0
+        self.crying = True
 
     def stop_crying(self):
-	self.crying = False
-
+        self.crying = False
+	
     def try_harder(self):
-	self.motivation += 11
+        self.motivation += 11
 
     @staticmethod
     def rtfm():
-	return read("https://0x00sec.org/")
+        return read("https://0x00sec.org/")
 
     def enumerate(self, target):
-	target.increase_progress(10)
-	return "Run gobuster & nmap?"
+        target.increase_progress(10)
+        return "Run gobuster & nmap?"
 
 
 class Target:
     def __init__(self, hostname):
-	self.hostname = hostname
-	self.hacked = False
-	self.hacked_progress = 0
+        self.hostname = hostname
+        self.hacked = False
+        self.hacked_progress = 0
 
     def increase_progress(self, amount):
-	if self.hacked_progress >= 100:
+        if self.hacked_progress >= 100:
             self.hacked = True
-	else:
+        else:
             self.hacked_progress += amount
 
 
