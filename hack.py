@@ -45,7 +45,7 @@ class Hacker:
         print("")
         print("???")
         print("Profit!")
-
+        ### If only oaktree was here. If you are reading this, email me pry0cc@0x00sec.org
 
 class Target:
     def __init__(self, hostname):
@@ -61,5 +61,5 @@ class Target:
 
 
 target = Target("https://hackthebox.eu/")
-me = Hacker("pry0cc", "0x00sec")
+me = Hacker("0x00member", "0x00sec")
 me.hack(target)
