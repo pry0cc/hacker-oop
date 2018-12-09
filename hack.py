@@ -45,7 +45,6 @@ class Hacker:
         print("")
         print("???")
         print("Profit!")
-        ### If only oaktree was here. If you are reading this, email me pry0cc@0x00sec.org
 
 class Target:
     def __init__(self, hostname):
